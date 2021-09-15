@@ -1,2 +1,11 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="container justify-content-center">
+  <h1 class="text-center mt-3 mb-5">MUSEUMS</h1>
+
+  <p class="text-center mb-3">Enter coordinates to find nearby museums:</p>
+
+  <form action="/api/v1/museums" method="get" class="text-center">
+    <input type="text" name="lng" placeholder="Enter the longitude">
+    <input type="text" name="lat" placeholder="Enter the latitude">
+    <input type="submit" class="btn btn-primary">
+  </form>
+</div>

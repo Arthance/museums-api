@@ -15,7 +15,7 @@ class Api::V1::MuseumsController < Api::V1::BaseController
   def mapbox_request(lng, lat)
     mapbox_request = "https://api.mapbox.com/geocoding/v5/mapbox.places/museum.json?type=poi&proximity=#{lng},#{lat}&limit=10&access_token=#{ENV["MAPBOX_TOKEN"]}"
     response_serialized = URI.open(mapbox_request).read
-    @response = JSON.parse(response_serialized, object_class: Openstruct)
+    @response = JSON.parse(response_serialized, object_class: OpenStruct)
     museums_details
   end
 
@@ -27,7 +27,7 @@ class Api::V1::MuseumsController < Api::V1::BaseController
       museum.context.each do |e|
         postcode = e.text if e.id.include?("postcode")
       end
-      if @museums.key?[postcode]
+      if @museums.key?(postcode)
         museums_name << @museums[postcode]
       end
       museums_name << museum.text
